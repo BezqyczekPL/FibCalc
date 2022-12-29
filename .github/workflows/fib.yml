@@ -45,10 +45,3 @@ jobs:
           file: ./FibCalc/Dockerfile
           push: true
           tags: bezqyczekpl/zadanie1:1
-          
-          
-           #Przenies cache'a
-      - name: Move cache
-        run: |
-          rm -rf /tmp/.buildx-cache
-          mv /tmp/.buildx-cache-new /tmp/.buildx-cache
