@@ -43,5 +43,6 @@ jobs:
         with:
           context: ./
           file: ./FibCalc/Dockerfile
+          platforms: linux/arm64, linux/amd64
           push: true
           tags: bezqyczekpl/zadanie1:1
