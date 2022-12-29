@@ -21,7 +21,19 @@ jobs:
         id: buildx
         uses: docker/setup-buildx-action@v2
       
-      #Konfiguracja cachowania
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: |
+            name/app
+          tags: |
+            type=ref,event=branch
+            type=ref,event=pr
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+      
+      
       - name: Cache Docker layers
         uses: actions/cache@v2
         with:
@@ -50,8 +62,8 @@ jobs:
         with:
           context: ./
           file: ./FibCalc/Dockerfile
-          cache-from: type=registry, ref=docker.io/${{ secrets.DOCKER_HUB_USERNAME }}/fibcalc:latest
-          cache-to: type=registry, ref=docker.io/${{ secrets.DOCKER_HUB_USERNAME }}/fibcalc:latest
+          cache-from: type=registry, ref=docker.io/${{ secrets.DOCKER_HUB_USERNAME }}/fibcalc:${{ steps.meta.outputs.tags }}
+          cache-to: type=registry, ref=docker.io/${{ secrets.DOCKER_HUB_USERNAME }}/fibcalc:${{ steps.meta.outputs.tags }}
           platforms: linux/arm64, linux/amd64
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/fibcalc:latest, ghcr.io/${{ secrets.GHCR_USERNAME }}/fibcalc:latest, 
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/fibcalc:${{ steps.meta.outputs.tags }}, ghcr.io/${{ secrets.GHCR_USERNAME }}/fibcalc:${{ steps.meta.outputs.tags }} 
