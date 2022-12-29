@@ -3,6 +3,8 @@ name: FibCalc
 on:
   push:
     branches: [main]
+    tags: 
+       - 'v*'
 
 jobs:
   build-push-images:
@@ -68,3 +70,4 @@ jobs:
           platforms: linux/arm64, linux/amd64
           push: true
           tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
