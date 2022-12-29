@@ -50,6 +50,8 @@ jobs:
         with:
           context: ./
           file: ./FibCalc/Dockerfile
+          cache-from: type=registry, ref=docker.io/${{ secrets.DOCKER_HUB_USERNAME }}/fibcalc:latest
+          cache-to: type=registry, ref=docker.io/${{ secrets.DOCKER_HUB_USERNAME }}/fibcalc:latest
           platforms: linux/arm64, linux/amd64
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/fibcalc:latest, ghcr.io/${{ secrets.GHCR_USERNAME }}/fibcalc:latest, 
