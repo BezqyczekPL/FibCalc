@@ -52,4 +52,4 @@ jobs:
           file: ./FibCalc/Dockerfile
           platforms: linux/arm64, linux/amd64
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/fibcalc:latest, ghcr.io/${{ secrets.GITHUB_USERNAME }}/fibcalc:latest, 
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/fibcalc:latest, ghcr.io/${{ secrets.GHCR_USERNAME }}/fibcalc:latest, 
