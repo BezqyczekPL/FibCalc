@@ -3,6 +3,8 @@ name: FibCalc
 on:
   push:
     branches: [main]
+    tags: 
+       - 'v*'
 
 jobs:
   build-push-images:
