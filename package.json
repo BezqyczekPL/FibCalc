@@ -1,0 +1,13 @@
+{
+    "name": "FibCalc",
+    "version": "1.0.0",
+    "keywords": ["util", "functional", "server", "client", "browser"],
+    "author": "dawid",
+    "contributors": [],
+    "scripts": {
+        "start": "node server.js"
+      },
+    "dependencies": {
+        "express": "^4.17.1"
+      }
+}
