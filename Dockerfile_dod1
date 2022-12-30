@@ -1,5 +1,5 @@
 FROM --platform=$BUILDPLATFORM node:14
-# wersja node'a jest pobierana na dany system, więcej nie udało się zrobić, ponieważ moja aplikacja nie kompiluje się
+# wersja node'a jest pobierana na dany system
 
 WORKDIR /app
 
@@ -8,6 +8,8 @@ COPY package.json .
 RUN npm install
 
 COPY . .
+
+RUN build --target=$TARGETPLATFORM
 
 CMD ["npm", "start"]
 
