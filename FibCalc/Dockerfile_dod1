@@ -9,7 +9,7 @@ RUN npm install
 
 COPY . .
 
-RUN build --target=$TARGETPLATFORM
+RUN build --target=$TARGETPLATFORM /app
 
 CMD ["npm", "start"]
 
